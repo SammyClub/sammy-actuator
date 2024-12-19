@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "actuator"
+version = "0.1"
+description = "Sammy Actuator API"
+authors = ["shavvimal <shavhugan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+python-dotenv = "^1.0.1"
+pydantic = { extras = ["email"], version = "^2.9.2" }
+fastapi = "^0.112.4"
+uvicorn = "^0.30.6"
+gunicorn = "^23.0.0"
+anthropic = "^0.40.0"
+pyautogui = "^0.9.54"
+screeninfo = "^0.8.1"
+pillow = "^11.0.0"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
