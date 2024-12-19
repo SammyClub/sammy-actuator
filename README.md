@@ -1,12 +1,16 @@
 # SAMMY Actuator API
 
-A FastAPI-based actuator service that enables SAMMY extension automation and screen capture.
+SAMMY is an AI-powered automation platform that guides users like a human would, helping teams focus on what really matters. This is the FastAPI-based actuator service enables intelligent GUI automation and screen capture for Supabase, automating tasks that might be difficult or impossible via traditional methods.
+
+🎥 [Watch the Quick Start Guide](https://www.loom.com/share/237a4e57a01c4eb2a175b6cef81763d6?sid=621d29ca-777e-411c-b8f8-d44e51e02460)
 
 ## Prerequisites
 
 - Python 3.12
 - Poetry (Python package manager)
 - Chrome/Arc browser for extension support
+- A Google account (for OAuth login)
+- Access to Supabase
 
 ## Installation
 
@@ -30,41 +34,40 @@ A FastAPI-based actuator service that enables SAMMY extension automation and scr
    poetry install
    ```
 
-# Setting permissions in macOS
+## macOS Permissions Setup
 
-If using macOS, you'll need to set up some permissions to ensure that the extension works as intended. Note that you won't be prompted for accessibility permissions. If permission is not granted, actuating will silently fail.
+⚠️ Important: On macOS, you must enable several permissions for the extension to work properly. If permissions aren't granted, actions will silently fail.
 
-## Enabling input monitoring
+### 1. Input Monitoring
 
-Input monitoring must be enabled in Settings in order to allow capture of mouse and keyboard input. You can do so by enabling the Cursor (or your IDE) under Settings &#8594; Privacy and security &#8594; Input monitoring &#8594; Allow Cursor (or your IDE)
+Enable under: Settings → Privacy & Security → Input Monitoring → Allow [Your IDE/Terminal]
 
 ![Enabling input monitoring](./assets/image-3.png)
 
-## Enabling screen recording
+### 2. Screen Recording
 
-Screen recoding must be enabled in Settings in order to allow capture of screenshots. You can do so by enabling the Cursor (or your IDE) application under Settings &#8594; Privacy and security &#8594; Screen recording &#8594; Allow Cursor (or your IDE)
+Enable under: Settings → Privacy & Security → Screen Recording → Allow [Your IDE/Terminal]
 
 ![Enabling screen recording](./assets/image-2.png)
 
-## Enabling replay of actions
+### 3. Accessibility Access
 
-Mouse and keyboard control must be enabled in Settings in order to allow replay of actions by the framework. You can do so by enabling the Cursor (or your IDE) application under Settings &#8594; Privay and security &#8594; Accessibility &#8594; Allow Cursor (or your IDE)
+Enable under: Settings → Privacy & Security → Accessibility → Allow [Your IDE/Terminal]
 
 ![Enabling replay of actions](./assets/image.png)
 
-## Running the API
+## Starting the API Server
 
-### Development Mode
+1. **Development Mode**
 
-```bash
-poetry run uvicorn actuator.app:app --port 8001 --reload
-```
+   ```bash
+   poetry run uvicorn actuator.app:app --port 8001 --reload
+   ```
 
-### Production Mode
-
-```bash
-poetry run gunicorn actuator.app:app -c gunicorn.conf.py
-```
+2. **Production Mode**
+   ```bash
+   poetry run gunicorn actuator.app:app -c gunicorn.conf.py
+   ```
 
 ## Browser Extension Setup
 
@@ -78,3 +81,26 @@ poetry run gunicorn actuator.app:app -c gunicorn.conf.py
 3. Click "Load unpacked"
 
 4. Navigate to and select the `supabase-extension` folder in this repository
+
+## Using SAMMY with Supabase
+
+0. Log into the SAMMY extension
+
+1. After installing the extension, navigate to [Supabase Dashboard](https://supabase.com/dashboard/)
+
+2. Look for the SAMMY AI icon in the top-right corner
+
+3. Click the icon and log in with Google OAuth
+
+4. You'll see:
+   - The SAMMY AI logo in the header
+   - "My Macros" in the top right
+   - "Top Community Macros"
+   - A search bar for finding macros
+
+## Features
+
+- **Search Macros**: Use the search bar to find macros using similarity search
+- **Create Macros**: Create new automation macros that will be processed in the background
+- **Community Macros**: Access and use macros created by the community
+- **Feedback System**: Provide feedback on macro execution for continuous improvement
