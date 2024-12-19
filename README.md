@@ -26,6 +26,7 @@ A FastAPI-based actuator service that enables SAMMY extension automation and scr
 
 3. **Install dependencies**
    ```bash
+   poetry env use 3.12
    poetry install
    ```
 
